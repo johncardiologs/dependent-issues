@@ -244,8 +244,7 @@ function getActionContext() {
         // Otherwise, check all open issues
         if (issues.length === 0) {
             core.info(`Payload issue: None or closed`);
-            const options = Object.assign(Object.assign({}, repo), { state: 'open', per_page: 100 });
-            // labels: config.label,
+            const options = Object.assign(Object.assign({}, repo), { state: 'open', per_page: 100, labels: config.label });
             // To get labels from response schema
             // - for PRs: items.labels.items.name
             const method = config.check_issues === 'on'
