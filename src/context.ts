@@ -68,9 +68,9 @@ export async function getActionContext(): Promise<ActionContext> {
 			...repo,
 			state: 'open' as 'open',
 			per_page: 100,
-			labels: config.label,
 		};
-
+		
+		// labels: config.label,
 		// To get labels from response schema
 		// - for PRs: items.labels.items.name
 
