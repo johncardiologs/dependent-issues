@@ -68,7 +68,7 @@ export async function getActionContext(): Promise<ActionContext> {
 			...repo,
 			state: 'open' as 'open',
 			per_page: 100,
-			labels: 'dependent',
+			labels: 'dependent' as 'dependent',
 		};
 
 		// To get labels from response schema
