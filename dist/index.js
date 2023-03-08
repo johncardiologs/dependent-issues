@@ -252,6 +252,7 @@ function getActionContext() {
                 : client.rest.pulls.list;
             issues = (yield client.paginate(method, options));
             core.info(`No. of open issues: ${issues.length}`);
+            core.info(`just a few issues`);
         }
         core.endGroup();
         return {

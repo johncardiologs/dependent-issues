@@ -81,6 +81,7 @@ export async function getActionContext(): Promise<ActionContext> {
 
 		issues = (await client.paginate(method, options)) as Issue[];
 		core.info(`No. of open issues: ${issues.length}`);
+		core.info(`just a few issues`);
 	}
 
 	core.endGroup();
