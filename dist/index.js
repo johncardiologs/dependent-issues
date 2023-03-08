@@ -503,7 +503,7 @@ class IssueManager {
                     : `Blocked by ${firstDependency} and ${blockers.length - 1} more issues`;
             // Get the PR Head SHA
             const pull = (yield this.gh.rest.pulls.get(Object.assign(Object.assign({}, this.repo), { pull_number: issue.number }))).data;
-            return this.gh.rest.repos.createCommitStatus(Object.assign(Object.assign({}, this.repo), { description, sha: pull.head.sha, context: this.config.actionName, state: isBlocked ? 'pending' : 'success' }));
+            return this.gh.rest.repos.createCommitStatus(Object.assign(Object.assign({}, this.repo), { description, sha: pull.head.sha, context: this.config.actionName, state: isBlocked ? 'failure' : 'success' }));
         });
     }
 }
