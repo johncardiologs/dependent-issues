@@ -165,7 +165,7 @@ export class IssueManager {
 		private config: ActionContext['config']
 	) {}
 
-	hasLabel(issue: Issue) {
+	hasLabel(issue: Issue): boolean {
 		const labels = issue.labels.map((label) =>
 			typeof label === 'string' ? label : label.name
 		);
