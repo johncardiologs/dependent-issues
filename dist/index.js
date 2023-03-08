@@ -244,13 +244,15 @@ function getActionContext() {
         // Otherwise, check all open issues
         if (issues.length === 0) {
             core.info(`Payload issue: None or closed`);
-            const options = Object.assign(Object.assign({}, repo), { state: 'open', per_page: 100, labels: config.label });
+            const options = Object.assign(Object.assign({}, repo), { state: 'open', per_page: 100, labels: [config.label] });
+            core.debug(JSON.stringify(options));
             // To get labels from response schema
             // - for PRs: items.labels.items.name
             const method = config.check_issues === 'on'
                 ? client.rest.issues.listForRepo
                 : client.rest.pulls.list;
             issues = (yield client.paginate(method, options));
+            core.debug(JSON.stringify(issues));
             core.info(`No. of open issues: ${issues.length}`);
         }
         core.endGroup();

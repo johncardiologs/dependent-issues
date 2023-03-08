@@ -68,8 +68,10 @@ export async function getActionContext(): Promise<ActionContext> {
 			...repo,
 			state: 'open' as 'open',
 			per_page: 100,
-			labels: config.label,
+			labels: [config.label],
 		};
+
+		core.debug(JSON.stringify(options));
 
 		// To get labels from response schema
 		// - for PRs: items.labels.items.name
@@ -80,6 +82,7 @@ export async function getActionContext(): Promise<ActionContext> {
 				: client.rest.pulls.list;
 
 		issues = (await client.paginate(method, options)) as Issue[];
+		core.debug(JSON.stringify(issues));
 		core.info(`No. of open issues: ${issues.length}`);
 	}
 
